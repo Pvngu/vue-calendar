@@ -1,6 +1,6 @@
 <template>
     <div
-        class="calendar-slot h-[30px] relative box-border group flex-none"
+        class="calendar-slot h-[30px] relative box-border group flex-none select-none"
         :style="{
             borderRight: '1px solid #e5e7eb',
             borderTop: isHourly ? '1px solid #d1d5db' : '1px solid #f3f4f6',

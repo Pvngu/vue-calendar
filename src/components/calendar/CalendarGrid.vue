@@ -1,5 +1,8 @@
 <template>
-    <div class="relative border-t border-gray-200 bg-white">
+    <div
+        class="relative border-t border-gray-200 bg-white"
+        :class="{ 'select-none': draggedAppointmentId || resizingAppointmentId }"
+    >
         <div
             ref="scrollContainer"
             class="min-w-full overflow-x-scroll max-h-[calc(100vh-68px)] overflow-y-auto"

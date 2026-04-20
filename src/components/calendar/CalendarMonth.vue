@@ -20,7 +20,7 @@
             <div
                 v-for="(dayObj, index) in calendarDays"
                 :key="index"
-                class="bg-white min-h-[120px] p-2 hover:bg-gray-50 transition-colors flex flex-col relative"
+                class="bg-white min-h-[120px] p-2 hover:bg-gray-50 transition-colors flex flex-col relative select-none"
                 :class="{
                     'opacity-50': !dayObj.isCurrentMonth,
                     'bg-blue-50/30': dayObj.isToday,
