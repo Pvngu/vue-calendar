@@ -10,11 +10,11 @@
                     <div class="flex w-max min-w-full">
                     <!-- Corner GMT Header (Sticky Top & Left) -->
                     <div
-                        class="sticky left-0 z-[110] bg-white border-b-2 border-r border-gray-200 flex items-center justify-center text-[10px] text-gray-400 font-medium shadow-sm transition-all flex-shrink-0"
+                        class="sticky left-0 z-[110] bg-white border-b-2 border-r border-gray-200 flex items-center justify-center text-[10px] text-gray-400 font-medium shadow-sm transition-all flex-shrink-0 w-15"
                         :class="
                             viewMode === 'week'
-                                ? 'w-15 h-10'
-                                : 'w-15 h-16'
+                                ? 'h-10'
+                                : 'h-16'
                         "
                     >
                         <span>{{ timezoneOffset }}</span>
@@ -33,11 +33,11 @@
                             >
                                 <!-- Status indicator bar -->
                                 <div
-                                    class="h-[3px] w-full flex-shrink-0"
+                                    class="h-0.75 w-full shrink-0"
                                     :class="isDoctorOnHoliday(dentist.xid, currentDate.format('YYYY-MM-DD')) ? 'bg-red-400' : 'bg-blue-400'"
                                 />
-                                <div class="p-3 flex justify-between items-start flex-1">
-                                    <div class="flex gap-3">
+                                <div class="p-3 flex flex-1">
+                                    <div class="flex gap-3 items-center">
                                         <a-avatar
                                             :src="dentist?.image"
                                             :alt="dentist?.name"
@@ -48,11 +48,11 @@
                                         <div
                                             class="dentist-details overflow-hidden"
                                         >
-                                            <h4
-                                                class="m-0 text-sm font-semibold text-gray-800 leading-tight truncate"
+                                            <span
+                                                class="m-0 text-xs text-gray-800 leading-tight truncate"
                                             >
                                                 {{ dentist?.name }}
-                                            </h4>
+                                            </span>
                                             <!-- Holiday status -->
                                             <div
                                                 v-if="isDoctorOnHoliday(dentist.xid, currentDate.format('YYYY-MM-DD'))"
@@ -158,7 +158,7 @@
                     >
                         <!-- Sidebar Label Background -->
                         <div
-                            class="w-[60px] h-[30px] flex items-center justify-center bg-gray-50 flex-shrink-0 relative"
+                            class="w-15 h-[30px] flex items-center justify-center bg-gray-50 flex-shrink-0 relative"
                         >
                             <!-- The black label box -->
                             <div
@@ -178,13 +178,13 @@
 
                     <!-- Time Slots Sidebar (Sticky Left) -->
                     <div
-                        class="w-[60px] sticky left-0 z-[90] bg-gray-50 flex-shrink-0 border-r border-gray-200"
+                        class="w-15 sticky left-0 z-[90] bg-gray-50 flex-shrink-0 border-r border-gray-200"
                     >
                         <!-- Time Slots Vertical List -->
                         <div
                             v-for="(time, index) in timeSlots"
                             :key="time"
-                            class="h-[30px] border-b border-gray-100 flex items-center justify-center text-[11px] text-gray-500 relative box-border"
+                            class="h-[30px] flex items-center justify-center text-[11px] text-gray-500 relative box-border"
                             :class="{
                                 'bg-[#fffbe6]':
                                     viewMode === 'day' && isBreakTime(time),
