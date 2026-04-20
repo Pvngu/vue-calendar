@@ -38,47 +38,47 @@
                             <TeamOutlined />
                         </div>
                         <span class="text-sm font-medium text-gray-800 truncate"
-                            >{{ allLabel }} ({{ dentists.length }})</span
+                            >{{ allLabel }} ({{ resources.length }})</span
                         >
                     </div>
                 </div>
 
-                <!-- Individual Doctors -->
+                <!-- Individual Resources -->
                 <div
-                    v-for="dentist in dentists"
-                    :key="dentist.xid"
+                    v-for="resource in resources"
+                    :key="resource.xid"
                     class="flex items-center gap-3 mb-2 rounded hover:bg-gray-50 p-2 cursor-pointer transition-colors"
-                    @click.self="toggleDentist(dentist.xid)"
+                    @click.self="toggleResource(resource.xid)"
                 >
                     <a-radio
                         v-if="singleSelect"
                         :checked="
-                            selectedDentists.length === 1 &&
-                            selectedDentists[0] === dentist.xid
+                            selectedResources.length === 1 &&
+                            selectedResources[0] === resource.xid
                         "
-                        @change="() => toggleDentist(dentist.xid)"
+                        @change="() => toggleResource(resource.xid)"
                     />
                     <a-checkbox
                         v-else
-                        :checked="selectedDentists.includes(dentist.xid)"
-                        @change="() => toggleDentist(dentist.xid)"
+                        :checked="selectedResources.includes(resource.xid)"
+                        @change="() => toggleResource(resource.xid)"
                     />
                     <div
                         class="flex items-center gap-3 overflow-hidden"
-                        @click="toggleDentist(dentist.xid)"
+                        @click="toggleResource(resource.xid)"
                     >
                         <a-avatar
-                            :src="dentist.image"
-                            :alt="dentist.name"
+                            :src="resource.image"
+                            :alt="resource.name"
                             :size="24"
                             class="flex-shrink-0 bg-gray-200 border border-gray-200 text-gray-600"
                         >
-                            {{ dentist.name.charAt(0) }}
+                            {{ resource.name.charAt(0) }}
                         </a-avatar>
                         <span
                             class="text-sm text-gray-700 truncate"
-                            :title="dentist.name"
-                            >{{ dentist.name }}</span
+                            :title="resource.name"
+                            >{{ resource.name }}</span
                         >
                     </div>
                 </div>
@@ -92,12 +92,12 @@ import { computed } from "vue";
 import { TeamOutlined } from "@ant-design/icons-vue";
 
 const props = defineProps({
-    dentists: {
+    resources: {
         type: Array,
         required: true,
         default: () => [],
     },
-    selectedDentists: {
+    selectedResources: {
         type: Array,
         required: true,
         default: () => [],
@@ -120,47 +120,47 @@ const props = defineProps({
     },
 });
 
-const emit = defineEmits(["update:selectedDentists"]);
+const emit = defineEmits(["update:selectedResources"]);
 
 const isAllSelected = computed(() => {
     return (
-        props.dentists.length > 0 &&
-        props.selectedDentists.length === props.dentists.length
+        props.resources.length > 0 &&
+        props.selectedResources.length === props.resources.length
     );
 });
 
 const isIndeterminate = computed(() => {
     return (
-        props.selectedDentists.length > 0 &&
-        props.selectedDentists.length < props.dentists.length
+        props.selectedResources.length > 0 &&
+        props.selectedResources.length < props.resources.length
     );
 });
 
 const toggleAll = () => {
     if (isAllSelected.value) {
         // Deselect all
-        emit("update:selectedDentists", []);
+        emit("update:selectedResources", []);
     } else {
         // Select all
-        const allIds = props.dentists.map((d) => d.xid);
-        emit("update:selectedDentists", allIds);
+        const allIds = props.resources.map((resource) => resource.xid);
+        emit("update:selectedResources", allIds);
     }
 };
 
-const toggleDentist = (id) => {
+const toggleResource = (id) => {
     if (props.singleSelect) {
-        emit("update:selectedDentists", [id]);
+        emit("update:selectedResources", [id]);
         return;
     }
 
-    const newSelection = [...props.selectedDentists];
+    const newSelection = [...props.selectedResources];
     const index = newSelection.indexOf(id);
     if (index > -1) {
         newSelection.splice(index, 1);
     } else {
         newSelection.push(id);
     }
-    emit("update:selectedDentists", newSelection);
+    emit("update:selectedResources", newSelection);
 };
 </script>
 

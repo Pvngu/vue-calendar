@@ -233,7 +233,7 @@ import {
     CheckCircleOutlined,
     ScheduleOutlined,
 } from "@ant-design/icons-vue";
-import { useTranslation } from "../composables/useTranslation";
+import { useTranslation } from "../../composables/useTranslation";
 
 const { t } = useTranslation();
 

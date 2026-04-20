@@ -106,21 +106,21 @@
                             </div>
                         </div>
 
-                        <!-- Doctor Info -->
+                        <!-- Resource Info -->
                         <div
                             class="mt-2 sm:mt-0 sm:w-48 flex-shrink-0 flex items-center gap-2"
                         >
                             <a-avatar
                                 :size="24"
-                                :src="getDoctorInfo(apt)?.image"
+                                :src="getResourceInfo(apt)?.image"
                                 class="bg-gray-200 text-gray-600 text-[10px] flex items-center justify-center font-bold"
                             >
-                                {{ getDoctorInfo(apt)?.name?.charAt(0) || "D" }}
+                                {{ getResourceInfo(apt)?.name?.charAt(0) || "R" }}
                             </a-avatar>
                             <span
                                 class="text-sm font-medium text-gray-700 truncate"
                             >
-                                {{ getDoctorInfo(apt)?.name }}
+                                {{ getResourceInfo(apt)?.name }}
                             </span>
                         </div>
                     </div>
@@ -141,15 +141,15 @@
 <script setup>
 import { computed } from "vue";
 import moment from "moment";
-import { useI18n } from "vue-i18n";
 import { CalendarOutlined } from "@ant-design/icons-vue";
+import { useTranslation } from "../../composables/useTranslation";
 
 const props = defineProps({
     appointments: {
         type: Array,
         default: () => [],
     },
-    dentists: {
+    resources: {
         type: Array,
         default: () => [],
     },
@@ -160,7 +160,7 @@ const props = defineProps({
 });
 
 const emit = defineEmits(["appointment-click", "task-complete-change"]);
-const { t } = useI18n();
+const { t } = useTranslation();
 
 const TIME_FORMAT_DISPLAY = "hh:mm A";
 const DATE_FORMAT_DB = "YYYY-MM-DD";
@@ -235,9 +235,9 @@ const getAppointmentDuration = (apt) => {
     return `${diffMins} Minutes`;
 };
 
-const getDoctorInfo = (apt) => {
-    const docId = apt.doctor_id || apt.dentist_id;
-    const doc = props.dentists.find((d) => d.xid === docId);
-    return doc || null;
+const getResourceInfo = (apt) => {
+    const resourceId = apt.resource_id || apt.doctor_id || apt.dentist_id;
+    const resource = props.resources.find((item) => item.xid === resourceId);
+    return resource || null;
 };
 </script>
