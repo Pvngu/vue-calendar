@@ -139,6 +139,10 @@
 </template>
 
 <script setup>
+import {
+    Checkbox as ACheckbox,
+    Avatar as AAvatar,
+} from "ant-design-vue";
 import { computed } from "vue";
 import moment from "moment";
 import { CalendarOutlined } from "@ant-design/icons-vue";

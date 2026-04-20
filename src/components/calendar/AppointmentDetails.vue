@@ -191,12 +191,36 @@ import {
     MoreOutlined,
     PhoneOutlined,
 } from "@ant-design/icons-vue";
+import {
+    Card as ACard,
+    Tag as ATag,
+    Space as ASpace,
+    Dropdown as ADropdown,
+    Menu as AMenu,
+    Button as AButton,
+    Row as ARow,
+    Col as ACol,
+    Avatar as AAvatar,
+} from "ant-design-vue";
+const AMenuItem = AMenu.Item;
+const AMenuDivider = AMenu.Divider;
 import { useI18n } from "vue-i18n";
 import moment from "moment";
 
 export default defineComponent({
     name: "AppointmentDetails",
     components: {
+        ACard,
+        ATag,
+        ASpace,
+        ADropdown,
+        AMenu,
+        AMenuItem,
+        AMenuDivider,
+        AButton,
+        ARow,
+        ACol,
+        AAvatar,
         UserOutlined,
         CalendarOutlined,
         MedicineBoxOutlined,

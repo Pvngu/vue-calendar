@@ -350,6 +350,7 @@
 </template>
 
 <script setup>
+import { Avatar as AAvatar } from "ant-design-vue";
 import { ref, watch, onMounted, onUnmounted, nextTick, computed } from "vue";
 import moment from "moment";
 import { CalendarOutlined } from "@ant-design/icons-vue";

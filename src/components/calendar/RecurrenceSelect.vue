@@ -175,9 +175,19 @@
 </template>
 
 <script setup>
+import {
+    Select as ASelect,
+    Modal as AModal,
+    InputNumber as AInputNumber,
+    Radio as ARadio,
+    DatePicker as ADatePicker,
+} from "ant-design-vue";
 import { ref, watch, computed, onMounted } from "vue";
 import moment from "moment";
 import { CloseCircleFilled } from "@ant-design/icons-vue";
+
+const ASelectOption = ASelect.Option;
+const ARadioGroup = ARadio.Group;
 import { useI18n } from "vue-i18n";
 
 /**

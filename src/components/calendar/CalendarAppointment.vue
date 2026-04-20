@@ -166,6 +166,7 @@
 </template>
 
 <script setup>
+import { Checkbox as ACheckbox } from "ant-design-vue";
 import { computed, ref, onUnmounted } from "vue";
 import { ExclamationCircleOutlined, AimOutlined } from "@ant-design/icons-vue";
 

@@ -172,14 +172,40 @@
 </template>
 
 <script>
-import { defineComponent, ref, watch, onMounted } from "vue";
+import {
+    Form as AForm,
+    Row as ARow,
+    Col as ACol,
+    FormItem as AFormItem,
+    Input as AInput,
+    Select as ASelect,
+    DatePicker as ADatePicker,
+    TimePicker as ATimePicker,
+    Space as ASpace,
+    Button as AButton,
+} from "ant-design-vue";
 import { SaveOutlined } from "@ant-design/icons-vue";
 import { useI18n } from "vue-i18n";
 import moment from "moment";
 
+const ASelectOption = ASelect.Option;
+const ATextarea = AInput.TextArea;
+
 export default defineComponent({
     name: "AppointmentForm",
     components: {
+        AForm,
+        ARow,
+        ACol,
+        AFormItem,
+        AInput,
+        ATextarea,
+        ASelect,
+        ASelectOption,
+        ADatePicker,
+        ATimePicker,
+        ASpace,
+        AButton,
         SaveOutlined,
     },
     props: {

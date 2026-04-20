@@ -102,7 +102,15 @@
 </template>
 
 <script setup>
+import {
+    Modal as AModal,
+    Checkbox as ACheckbox,
+    Radio as ARadio,
+    Button as AButton,
+} from "ant-design-vue";
 import { ref, watch } from "vue";
+
+const ARadioGroup = ARadio.Group;
 
 const props = defineProps({
     visible: {
