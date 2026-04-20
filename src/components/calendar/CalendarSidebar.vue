@@ -1,7 +1,7 @@
 <template>
 <div
         v-if="resources.length > 1"
-        class="bg-white transition-[width,opacity] duration-300 ease-in-out shrink-0 overflow-hidden my-4"
+        class="bg-white transition-[width,opacity] duration-300 ease-in-out shrink-0 overflow-hidden my-4 max-h-[calc(100vh-112px)]"
         :class="
             visible
                 ? 'w-64 border-r border-gray-200 opacity-100'

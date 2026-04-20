@@ -13,8 +13,8 @@
                         class="sticky left-0 z-[110] bg-white border-b-2 border-r border-gray-200 flex items-center justify-center text-[10px] text-gray-400 font-medium shadow-sm transition-all flex-shrink-0"
                         :class="
                             viewMode === 'week'
-                                ? 'w-[60px] h-[40px]'
-                                : 'w-[60px] h-[88px]'
+                                ? 'w-15 h-10'
+                                : 'w-15 h-16'
                         "
                     >
                         <span>{{ timezoneOffset }}</span>
