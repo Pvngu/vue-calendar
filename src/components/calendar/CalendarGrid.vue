@@ -2,7 +2,7 @@
     <div class="relative border-t border-gray-200 bg-white">
         <div
             ref="scrollContainer"
-            class="min-w-full overflow-x-scroll max-h-[calc(100vh-130px)] overflow-y-auto"
+            class="min-w-full overflow-x-scroll max-h-[calc(100vh-68px)] overflow-y-auto"
         >
             <div class="flex flex-col w-max min-w-full">
                 <!-- Unified Sticky Header -->
@@ -63,29 +63,6 @@
                                                     {{ $t('calendar.on_holiday', 'On Holiday') }}
                                                 </span>
                                             </div>
-                                            <!-- Normal: appointment count -->
-                                            <p
-                                                v-else
-                                                class="mt-1 text-[11px] text-gray-400 flex flex-col whitespace-nowrap"
-                                            >
-                                                <span class="mb-0.5">
-                                                    {{
-                                                        $t(
-                                                            "calendar.todays_appointment",
-                                                        )
-                                                    }}
-                                                </span>
-                                                <strong class="text-blue-500">
-                                                    {{
-                                                        getDentistAppointmentCount(
-                                                            dentist?.xid,
-                                                        )
-                                                    }}
-                                                    {{
-                                                        $t("calendar.patient_count")
-                                                    }}
-                                                </strong>
-                                            </p>
                                         </div>
                                     </div>
                                 </div>
@@ -241,7 +218,6 @@
                                 :timeSlots="timeSlots"
                                 :currentDate="currentDate"
                                 :appointmentSlots="appointmentSlots"
-                                :appointments="appointments"
                                 :doctorHolidays="doctorHolidays"
                                 :isDoctorOnBreak="isDoctorOnBreak"
                                 :isSlotUnavailable="isSlotUnavailable"
@@ -298,7 +274,6 @@
                                 :timeSlots="timeSlots"
                                 :currentDate="currentDate"
                                 :appointmentSlots="appointmentSlots"
-                                :appointments="appointments"
                                 :doctorHolidays="doctorHolidays"
                                 :isDoctorOnBreak="isDoctorOnBreak"
                                 :isSlotUnavailable="isSlotUnavailable"
@@ -367,7 +342,6 @@ const props = defineProps({
     dentists: Array,
     currentDate: Object,
     appointmentSlots: Object,
-    appointments: Array,
     doctorHolidays: Array,
     timezoneOffset: String,
     draggedAppointmentId: { type: [String, Number], default: null },
@@ -395,16 +369,6 @@ defineEmits([
     "resize-end",
     "task-complete-change",
 ]);
-
-const getDentistAppointmentCount = (dentistId) => {
-    let count = 0;
-    Object.keys(props.appointmentSlots).forEach((key) => {
-        if (key.startsWith(`${dentistId}-`)) {
-            count += props.appointmentSlots[key].length;
-        }
-    });
-    return count;
-};
 
 const hasAllDayEvents = computed(() => {
     return Object.keys(props.appointmentSlots || {}).some(

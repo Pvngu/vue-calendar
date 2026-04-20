@@ -120,7 +120,6 @@ const props = defineProps({
     timeSlots: { type: Array, required: true },
     currentDate: { type: Object, required: true }, // Moment object
     appointmentSlots: { type: Object, required: true },
-    appointments: { type: Array, required: true }, // Needed for count and helpers
     doctorHolidays: { type: Array, default: () => [] },
     // Helpers passed as props or imported?
     // It's cleaner to keep logic pure/utils but specific business logic is in parent.
@@ -171,14 +170,6 @@ const isToday = computed(() => {
     return false;
 });
 
-const getDentistAppointmentCount = (dentistId) => {
-    if (!dentistId) return 0;
-    const dateStr = props.currentDate.format("YYYY-MM-DD");
-    return props.appointments.filter(
-        (apt) =>
-            apt.dentist_id === dentistId && apt.appointment_date === dateStr,
-    ).length;
-};
 
 // Compute contiguous break time bands for day/week columns
 const breakBands = computed(() => {

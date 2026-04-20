@@ -4,7 +4,7 @@
             :currentDate="currentDate"
             :formattedDate="formattedCurrentDate"
             :viewMode="viewMode"
-            :totalAppointments="totalAppointments"
+
             :resources="availableResources"
             :selectedResources="selectedResources"
             :sidebarVisible="showSidebar"
@@ -306,23 +306,6 @@ const filteredResources = computed(() => {
     );
 });
 
-const totalAppointments = computed(() => {
-    if (viewMode.value === "week") {
-        return visibleAppointments.value.filter((event) => {
-            const eventDate = moment(event.appointment_date, DATE_FORMAT_DB);
-            return weekDays.value.some((day) => eventDate.isSame(day.date, "day"));
-        }).length;
-    }
-
-    if (viewMode.value === "month" || viewMode.value === "agenda") {
-        return visibleAppointments.value.length;
-    }
-
-    const targetDate = currentDate.value.format(DATE_FORMAT_DB);
-    return visibleAppointments.value.filter(
-        (event) => event.appointment_date === targetDate,
-    ).length;
-});
 
 const isHourly = (time) => !time.includes(":");
 

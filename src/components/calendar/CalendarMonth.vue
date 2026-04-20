@@ -1,6 +1,6 @@
 <template>
     <div
-        class="calendar-month-view w-full h-full bg-white flex flex-col relative max-h-[calc(100vh-130px)] overflow-hidden"
+        class="calendar-month-view w-full h-full bg-white flex flex-col relative max-h-[calc(100vh-68px)] overflow-hidden"
     >
         <!-- Weekdays Header -->
         <div class="grid grid-cols-7 border-b border-gray-200 bg-white">

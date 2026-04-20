@@ -23,10 +23,7 @@
                     </span>
                 </a-button>
 
-                <div class="flex items-center gap-2 text-sm text-gray-400">
-                    <CalendarOutlined />
-                    <span>{{ totalAppointments }}</span>
-                </div>
+
             </div>
 
             <div class="nav-center flex items-center justify-center gap-4">
@@ -241,7 +238,7 @@ const props = defineProps({
     currentDate: { type: Object, required: true },
     formattedDate: { type: String, default: "" },
     viewMode: { type: String, default: "day_single" },
-    totalAppointments: { type: Number, default: 0 },
+
     resources: { type: Array, default: () => [] },
     selectedResources: { type: Array, default: () => [] },
     sidebarVisible: { type: Boolean, default: true },

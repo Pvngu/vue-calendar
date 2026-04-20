@@ -59,7 +59,7 @@
                         <a-avatar
                             :src="resource.image"
                             :alt="resource.name"
-                            :size="24"
+                            size="small"
                             class="shrink-0 bg-gray-200 border border-gray-200 text-gray-600"
                         >
                             <span>{{ resource.name.charAt(0) }}</span>

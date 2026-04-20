@@ -1,6 +1,6 @@
 <template>
     <div
-        class="w-full bg-white relative p-4 lg:p-6 overflow-y-auto max-h-[calc(100vh-130px)] min-h-[500px]"
+        class="w-full bg-white relative p-4 lg:p-6 overflow-y-auto max-h-[calc(100vh-68px)] min-h-[500px]"
     >
         <div
             v-if="Object.keys(groupedAppointments).length === 0"
